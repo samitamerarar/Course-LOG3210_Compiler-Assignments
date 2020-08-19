@@ -1,0 +1,5 @@
+// Tests on switch statement
+
+switch (0) {
+    case 0 : a = 0;
+}

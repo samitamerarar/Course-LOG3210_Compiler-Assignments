@@ -1,0 +1,132 @@
+LD R0, c
+// Life_IN  : [@a, @b]
+// Life_OUT : [@a, @b, @c]
+// Next_IN  : 
+// Next_OUT : @c:[1]
+
+MUL R0, #2, R0
+// Life_IN  : [@a, @b, @c]
+// Life_OUT : [@a, @b, @t0]
+// Next_IN  : @c:[1]
+// Next_OUT : @t0:[3]
+
+LD R1, d
+// Life_IN  : [@a, @b, @t0]
+// Life_OUT : [@a, @b, @d, @t0]
+// Next_IN  : @t0:[3]
+// Next_OUT : @d:[3], @t0:[3]
+
+ADD R0, R0, R1
+// Life_IN  : [@a, @b, @d, @t0]
+// Life_OUT : [@a, @b, @t1]
+// Next_IN  : @d:[3], @t0:[3]
+// Next_OUT : @t1:[5]
+
+LD R1, d
+// Life_IN  : [@a, @b, @t1]
+// Life_OUT : [@a, @b, @d!, @t1]
+// Next_IN  : @t1:[5]
+// Next_OUT : @d!:[5], @t1:[5]
+
+MUL R0, R1, R0
+// Life_IN  : [@a, @b, @d!, @t1]
+// Life_OUT : [@a, @b, @t2]
+// Next_IN  : @d!:[5], @t1:[5]
+// Next_OUT : @t2:[6]
+
+ADD R0, #0, R0
+// Life_IN  : [@a, @b, @t2]
+// Life_OUT : [@a, @b, @t]
+// Next_IN  : @t2:[6]
+// Next_OUT : @t:[7]
+
+ST t, R0
+// Life_IN  : [@a, @b, @t]
+// Life_OUT : [@a, @b]
+// Next_IN  : @t:[7]
+// Next_OUT : 
+
+LD R2, c
+// Life_IN  : [@a, @b]
+// Life_OUT : [@a, @b, @c!]
+// Next_IN  : 
+// Next_OUT : @c!:[9]
+
+MUL R2, R2, R2
+// Life_IN  : [@a, @b, @c!]
+// Life_OUT : [@a, @b, @t3]
+// Next_IN  : @c!:[9]
+// Next_OUT : @t3:[12]
+
+LD R1, d
+// Life_IN  : [@a, @b, @t3]
+// Life_OUT : [@a, @b, @d!!, @t3]
+// Next_IN  : @t3:[12]
+// Next_OUT : @d!!:[11], @t3:[12]
+
+MUL R0, R1, R1
+// Life_IN  : [@a, @b, @d!!, @t3]
+// Life_OUT : [@a, @b, @t3, @t4]
+// Next_IN  : @d!!:[11], @t3:[12]
+// Next_OUT : @t3:[12], @t4:[12]
+
+ADD R0, R2, R0
+// Life_IN  : [@a, @b, @t3, @t4]
+// Life_OUT : [@a, @b, @t5]
+// Next_IN  : @t3:[12], @t4:[12]
+// Next_OUT : @t5:[13]
+
+ADD R2, #0, R0
+// Life_IN  : [@a, @b, @t5]
+// Life_OUT : [@a, @b, @c!]
+// Next_IN  : @t5:[13]
+// Next_OUT : @c!:[19]
+
+LD R0, t
+// Life_IN  : [@a, @b, @c!]
+// Life_OUT : [@a, @b, @c!, @t!]
+// Next_IN  : @c!:[19]
+// Next_OUT : @c!:[19], @t!:[15]
+
+ADD R1, #0, R0
+// Life_IN  : [@a, @b, @c!, @t!]
+// Life_OUT : [@a, @b, @c!, @d!!]
+// Next_IN  : @c!:[19], @t!:[15]
+// Next_OUT : @c!:[19], @d!!:[20]
+
+LD R0, i
+// Life_IN  : [@a, @b, @c!, @d!!]
+// Life_OUT : [@a, @b, @c!, @d!!, @i]
+// Next_IN  : @c!:[19], @d!!:[20]
+// Next_OUT : @c!:[19], @d!!:[20], @i:[17]
+
+DIV R0, R0, #2
+// Life_IN  : [@a, @b, @c!, @d!!, @i]
+// Life_OUT : [@a, @b, @c!, @d!!, @t6]
+// Next_IN  : @c!:[19], @d!!:[20], @i:[17]
+// Next_OUT : @c!:[19], @d!!:[20], @t6:[18]
+
+ADD R0, #0, R0
+// Life_IN  : [@a, @b, @c!, @d!!, @t6]
+// Life_OUT : [@a, @b, @c!, @d!!, @i]
+// Next_IN  : @c!:[19], @d!!:[20], @t6:[18]
+// Next_OUT : @c!:[19], @d!!:[20], @i:[21]
+
+ST c, R2
+// Life_IN  : [@a, @b, @c!, @d!!, @i]
+// Life_OUT : [@a, @b, @d!!, @i]
+// Next_IN  : @c!:[19], @d!!:[20], @i:[21]
+// Next_OUT : @d!!:[20], @i:[21]
+
+ST d, R1
+// Life_IN  : [@a, @b, @d!!, @i]
+// Life_OUT : [@a, @b, @i]
+// Next_IN  : @d!!:[20], @i:[21]
+// Next_OUT : @i:[21]
+
+ST i, R0
+// Life_IN  : [@a, @b, @i]
+// Life_OUT : [@a, @b]
+// Next_IN  : @i:[21]
+// Next_OUT : 
+

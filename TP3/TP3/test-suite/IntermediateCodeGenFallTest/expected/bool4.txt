@@ -1,0 +1,10 @@
+goto _L2
+_t0 = - 1
+_t1 = 2 + 2
+ifFalse _t0 <= _t1 goto _L0
+_L2
+a = 1
+goto _L1
+_L0
+a = 0
+_L1

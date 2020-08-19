@@ -1,0 +1,19 @@
+NUMBER_OF_REGISTER_AVAILABLE: 5
+
+a = b + c
+b = c + a
+d = a + b
+e = c + a
+f = b + d
+t0 = d + e
+t1 = c + f
+g = t0 + t1
+t2 = a + b
+t3 = e + d
+t4 = c + f
+t5 = g + b
+h = t2 + t4
+i = h + t3
+j = i + t5
+
+return j

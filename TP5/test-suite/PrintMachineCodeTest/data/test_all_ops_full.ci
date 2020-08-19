@@ -1,0 +1,13 @@
+NUMBER_OF_REGISTER_AVAILABLE: 256
+
+t0 = a * b
+t1 = c / d
+t2 = e + f
+t3 = g - h
+t4 = t0 * t1
+t5 = t4 / t2
+t6 = t5 - t3
+t7 = t6 + 1
+i = t7 + t5
+
+return i

@@ -1,0 +1,37 @@
+a = 1
+goto _L1
+_L0
+a = 0
+_L1
+goto _L2
+b = 1
+goto _L3
+_L2
+b = 0
+_L3
+goto _L6
+goto _L4
+_L6
+c = 1
+goto _L5
+_L4
+c = 0
+_L5
+_L9
+d = 1
+goto _L8
+_L7
+d = 0
+_L8
+goto _L10
+e = 1
+goto _L11
+_L10
+e = 0
+_L11
+goto _L12
+f = 1
+goto _L13
+_L12
+f = 0
+_L13

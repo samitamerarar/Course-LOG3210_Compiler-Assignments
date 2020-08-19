@@ -1,0 +1,5 @@
+//erreur declaration
+Declaration
+num b;
+num b;
+EndDeclaration

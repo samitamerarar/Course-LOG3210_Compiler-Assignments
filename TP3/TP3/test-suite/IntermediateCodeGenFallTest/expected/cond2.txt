@@ -1,0 +1,10 @@
+ifFalse a > 5 goto _L0
+_L1
+a = 1
+ifFalse a < 5 goto _L2
+goto _L3
+_L2
+_t0 = a + 1
+a = _t0
+_L3
+_L0

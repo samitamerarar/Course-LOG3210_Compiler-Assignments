@@ -1,0 +1,312 @@
+options {
+	JAVA_UNICODE_ESCAPE=true;
+	STATIC=false;					// 1 seul parseur actif a la fois (+ rapide)
+	MULTI=true;						// type noeud = f(nom noeud)
+	VISITOR=true;					// Cree une methode accept(visiteur)
+}
+
+//
+// PARSER DEFINITION
+//
+
+PARSER_BEGIN(Parser)
+
+package analyzer.ast;
+
+public class Parser
+{
+	public static ASTProgram ParseTree(java.io.InputStream input) throws ParseException
+	{
+		Parser c = new Parser(input);
+		return c.Program();
+	}
+}
+
+PARSER_END(Parser)
+
+//
+// LEXICAL ANALYSIS
+//
+
+// White space
+
+SKIP :
+{
+	< ( " " | "\t" | "\n" | "\r" )+	>
+}
+
+// Comments
+
+MORE :
+{
+  "//" : IN_SINGLE_LINE_COMMENT
+|
+  <"/**" ~["/"]> { input_stream.backup(1); } : IN_FORMAL_COMMENT
+|
+  "/*" : IN_MULTI_LINE_COMMENT
+}
+
+<IN_SINGLE_LINE_COMMENT>
+SPECIAL_TOKEN :
+{
+  <SINGLE_LINE_COMMENT: "\n" | "\r" | "\r\n" > : DEFAULT
+}
+
+<IN_FORMAL_COMMENT>
+SPECIAL_TOKEN :
+{
+  <FORMAL_COMMENT: "*/" > : DEFAULT
+}
+
+<IN_MULTI_LINE_COMMENT>
+SPECIAL_TOKEN :
+{
+  <MULTI_LINE_COMMENT: "*/" > : DEFAULT
+}
+
+<IN_SINGLE_LINE_COMMENT,IN_FORMAL_COMMENT,IN_MULTI_LINE_COMMENT>
+MORE :
+{
+  < ~[] >
+}
+
+
+
+// Keywords
+TOKEN :
+{
+	< IF: "if"	> |
+	< ELSE: "else" > |
+	< STRING: "string"> |
+	< INT: "int"> |
+	< FLOAT: "float" > |
+	< BOOL: "bool"> |
+	< PRINT: "print" > |
+	< INPUT: "input" > |
+	< IN: "in" > |
+	< WHILE: "while" > |
+	< SWITCH: "switch" > |
+	< CASE: "case" > |
+	< DEF: "default" > |
+	< DO: "do" >
+	// À compléter au besoin
+}
+
+// Operators
+TOKEN :
+{
+	< ASSIGN: < EQUAL >  > |
+	< COMPARE: < LESS > | < LESSEQUAL > | < GREAT > | <GREATEQUAL > | < DIFF > | < EQUALEQUAL > > |
+    < LOGIC: < AND > | < OR > > |
+	< #LESS: "<" > |
+	< #LESSEQUAL: "<=" > |
+	< #GREAT: ">" > |
+	< #GREATEQUAL: ">=" > |
+	< #DIFF: "!=" > |
+	< #EQUALEQUAL: "==" > |
+
+	< PLUS: "+" > |
+	< MINUS: "-" > |
+	< FOIS: "*" > |
+	< DIV: "/" > |
+    < NOT: "!" > |
+
+	< #EQUAL: "=" > |
+	< LPAREN: "(" > |
+	< RPAREN: ")" > |
+	< LACC: "{" > |
+	< RACC: "}" > |
+	< COLON: ":" > |
+	< SEMICOLON: ";" > |
+	< COMMA: "," > |
+	< #AND: "&&" > |
+	< #OR: "||" >
+	// À compléter au besoin
+}
+
+
+// Identifiers and numbers
+TOKEN :
+{
+	< IDENTIFIER: <LETTER> ( <LETTER> | <DIGIT> )* > |
+	< #LETTER: ["a"-"z","A"-"Z","_"] > |
+	< #DIGIT: ["0"-"9"] > |
+	< INTEGER: ["1"-"9"] (["0"-"9"])* | "0" > |
+	// // Caution! Allows numbers such as "0000.23"
+	// 2.5    Les nombres réels
+	< REAL: (<MINUS>)?
+	    (((<INTEGER>)+ "." (<INTEGER>)+)| ((<DIGIT>)+ ".") | (".")(<DIGIT>)+)
+	    (("e" | "E") (<PLUS>|<MINUS>) (<INTEGER>)+)?
+	>
+}
+
+//
+// SYNTAX ANALYSIS
+//
+
+ASTProgram Program() : { }
+{
+	Block() <EOF> { return jjtThis;  }
+}
+
+void Block() #void : { }
+{
+	 ( Stmt() )*
+}
+
+void Stmt() #void : { }
+{
+	AssignStmt() <SEMICOLON> |
+	WhileStmt() |
+	DoStmt() |
+	IfStmt() |
+	SwitchStmt()
+}
+
+void AssignStmt() : { Token t;}
+{
+	Identifier() <ASSIGN> IntExpr()
+}
+
+void Expr() #void : {}
+{
+    IntExpr()
+}
+
+void IntExpr() #void : {}
+{
+    IntAndOrExpr()
+}
+
+// 2.4    Priorité des oṕerations
+void IntAndOrExpr() #void : { Token t;}
+{
+    (IntCompExpr() (LOOKAHEAD(2)
+            (t = <LOGIC>) IntCompExpr()
+    )*)#AndOr(>1)
+}
+
+void IntCompExpr() #void : { Token t;}
+{
+    (IntAddExpr() (LOOKAHEAD(2)
+            (t = <COMPARE>) IntAddExpr()
+    )*)#Compar(>1)
+}
+
+void IntAddExpr() #void : { Token t;}
+{
+    (IntMulExpr() (LOOKAHEAD(2)
+        (t = <PLUS> | t = <MINUS>) IntMulExpr()
+    )*)#Add_Sub(>1)
+}
+
+void IntMulExpr() #void : { Token t;}
+{
+    (IntNegExpr() (LOOKAHEAD(2)
+        (t = <FOIS> | t = <DIV>) IntNegExpr()
+    )*)#Mul_Div(>1)
+}
+
+void IntNegExpr() #void : { Token t;}
+{
+    (
+      (((t = <MINUS>) IntNotExpr())#Negative(>0))
+    ) | IntNotExpr()
+}
+
+void IntNotExpr() #void : { Token t;}
+{
+    (
+      (((t = <NOT>) IntBasicExpr())#Not(>0))
+    ) | IntBasicExpr()
+}
+
+void IntBasicExpr() #void : {}
+{
+	LOOKAHEAD(2) Identifier() |
+	IntValue() |
+	RealValue() |
+	LOOKAHEAD(2) <LPAREN> Expr() <RPAREN>
+}
+
+void Identifier() : { Token t;}
+{
+	t = <IDENTIFIER> {jjtThis.setValue(t.image);}
+}
+
+void IntValue() : { Token t;}
+{
+	t = <INTEGER> {jjtThis.setValue(Integer.parseInt(t.image));}
+}
+
+void RealValue() : { Token t;}
+{
+	t = <REAL> {jjtThis.setValue(Double.parseDouble(t.image));}
+}
+
+// 2.1    Les boucles while et do-while
+void WhileStmt() : {}
+{
+    <WHILE> <LPAREN> Expr() <RPAREN> ((WhileBody() | Stmt())| <SEMICOLON>)
+}
+
+void WhileBody() : {}
+{
+    <LACC> Block() <RACC>
+}
+
+void DoStmt() : {}
+{
+    <DO> <LACC> Block() <RACC> WhileStmt()
+}
+
+// 2.2    Les structures conditionnelles
+void IfStmt() : {}
+{
+    <IF> <LPAREN> Expr() <RPAREN>
+    (
+        <LACC> IfBody() <RACC>
+         (
+            LOOKAHEAD(2)
+            ( ElseBody()) |
+            ( (<ELSE> IfStmt())#ElseBody) |
+            ( {} )
+         )|
+        Stmt()
+        (
+             LOOKAHEAD(2)
+            ( ElseBody()) |
+            ( (<ELSE> IfStmt())#ElseBody) |
+            ( {} )
+        )
+    )
+}
+
+void IfBody() : {}
+{
+    Block()
+}
+
+void ElseBody() : {}
+{
+    <ELSE> <LACC> Block() <RACC>
+}
+
+// 2.3    La structure Switch
+void SwitchStmt(): {}
+{
+    <SWITCH> <LPAREN> Expr() <RPAREN> <LACC>
+    (CaseStmt())+
+    (DefaultStmt())?
+    <RACC>
+}
+
+void CaseStmt(): {}
+{
+    <CASE> Expr() <COLON> Block()
+}
+
+void DefaultStmt(): {}
+{
+    <DEF> <COLON> Block()
+}

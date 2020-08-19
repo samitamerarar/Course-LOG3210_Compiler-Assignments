@@ -1,0 +1,11 @@
+Declaration
+num a;
+num b;
+num c;
+num d;
+EndDeclaration
+
+a = a + a;
+c = a + b;
+d = a + b;
+a = d;

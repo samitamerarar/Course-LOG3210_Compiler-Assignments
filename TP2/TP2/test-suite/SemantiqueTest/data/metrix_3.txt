@@ -1,0 +1,10 @@
+Declaration
+num a;
+EndDeclaration
+
+
+while(true) {
+  if(true) {
+    a = 1+2;
+  }
+}

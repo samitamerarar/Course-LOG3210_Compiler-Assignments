@@ -1,0 +1,11 @@
+NUMBER_OF_REGISTER_AVAILABLE: 256
+
+current = 0
+a = a * a
+current = a
+offset = c + d
+a = a + 1
+offset = offset + a
+size = current + offset
+
+return size

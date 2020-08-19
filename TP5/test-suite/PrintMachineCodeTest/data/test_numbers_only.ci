@@ -1,0 +1,11 @@
+NUMBER_OF_REGISTER_AVAILABLE: 256
+
+a = 1 + 2
+b = minus 3
+c = 100000 / 5
+d = 16 * 132
+t0 = c + d
+t1 = a - b
+e = t0 * t1
+
+return e

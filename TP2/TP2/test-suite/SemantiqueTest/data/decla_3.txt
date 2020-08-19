@@ -1,0 +1,5 @@
+//good declaration
+Declaration
+num a;
+bool b;
+EndDeclaration

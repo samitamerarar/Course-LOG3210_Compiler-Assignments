@@ -1,0 +1,10 @@
+// Error test for while and do-while statement
+
+// missing parenthesis
+while a==1
+    a = 0;
+
+// missing ";"
+do {
+    a=0;
+} while (a==1)

@@ -1,0 +1,10 @@
+if b == 1 goto _L0
+goto _L1
+_L0
+_t0 = 1 + 2
+a = _t0
+goto _L2
+_L1
+_t1 = 1 * 2
+a = _t1
+_L2

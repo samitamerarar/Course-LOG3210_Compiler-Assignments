@@ -1,0 +1,12 @@
+_t0 = - 1
+_t1 = 2 + 2
+if _t0 <= _t1 goto _L3
+goto _L1
+_L3
+goto _L0
+_L0
+a = 1
+goto _L2
+_L1
+a = 0
+_L2

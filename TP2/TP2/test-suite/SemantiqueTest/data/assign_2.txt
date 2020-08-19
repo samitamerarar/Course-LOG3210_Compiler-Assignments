@@ -1,0 +1,9 @@
+Declaration
+num a;
+bool b;
+EndDeclaration
+
+a = 1;
+b = true;
+
+a = b;

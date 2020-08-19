@@ -1,0 +1,7 @@
+a = 10
+_L0
+ifFalse a > 0 goto _L1
+_t0 = a - 1
+a = _t0
+goto _L0
+_L1

@@ -1,0 +1,15 @@
+Declaration
+bool a;
+bool b;
+bool c;
+EndDeclaration
+
+
+b = a && c;
+if(a) {
+    b = a || c;
+}
+else {
+    b = a;
+}
+a = c;

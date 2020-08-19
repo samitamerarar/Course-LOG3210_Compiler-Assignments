@@ -1,0 +1,50 @@
+goto _L0
+_L0
+a = 1
+goto _L2
+_L1
+a = 0
+_L2
+goto _L4
+_L3
+b = 1
+goto _L5
+_L4
+b = 0
+_L5
+goto _L6
+_L9
+goto _L7
+_L6
+c = 1
+goto _L8
+_L7
+c = 0
+_L8
+goto _L13
+_L13
+goto _L10
+_L10
+d = 1
+goto _L12
+_L11
+d = 0
+_L12
+goto _L17
+_L17
+goto _L15
+_L14
+e = 1
+goto _L16
+_L15
+e = 0
+_L16
+goto _L19
+_L21
+goto _L18
+_L18
+f = 1
+goto _L20
+_L19
+f = 0
+_L20

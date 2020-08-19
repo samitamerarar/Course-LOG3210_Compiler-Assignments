@@ -1,0 +1,32 @@
+===== STEP 0 ===== 
+REF : [a]
+DEF : [a]
+IN  : [a, b]
+OUT : [a, b]
+SUCC: [_step1]
+PRED: []
+
+===== STEP 1 ===== 
+REF : [a, b]
+DEF : [c]
+IN  : [a, b]
+OUT : [a, b]
+SUCC: [_step2]
+PRED: [_step0]
+
+===== STEP 2 ===== 
+REF : [a, b]
+DEF : [d]
+IN  : [a, b]
+OUT : [d]
+SUCC: [_step3]
+PRED: [_step1]
+
+===== STEP 3 ===== 
+REF : [d]
+DEF : [a]
+IN  : [d]
+OUT : []
+SUCC: []
+PRED: [_step2]
+

@@ -1,0 +1,60 @@
+ADD R1, #0, #3
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : 
+
+ADD R2, #0, #5
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : 
+
+LD R1, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+// Life_IN  : []
+// Life_OUT : [@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]
+// Next_IN  : 
+// Next_OUT : @aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:[4, 6]
+
+LD R2, bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+// Life_IN  : [@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]
+// Life_OUT : [@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]
+// Next_IN  : @aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:[4, 6]
+// Next_OUT : @aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:[4, 6], @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:[4, 8]
+
+ADD R0, R1, R2
+// Life_IN  : [@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]
+// Life_OUT : [@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]
+// Next_IN  : @aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:[4, 6], @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:[4, 8]
+// Next_OUT : @aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:[6], @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:[8]
+
+LD R0, cccccccccccccccccccccccccccccccccccccccccc
+// Life_IN  : [@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]
+// Life_OUT : [@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb, @cccccccccccccccccccccccccccccccccccccccccc]
+// Next_IN  : @aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:[6], @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:[8]
+// Next_OUT : @aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:[6], @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:[8], @cccccccccccccccccccccccccccccccccccccccccc:[6]
+
+DIV R0, R1, R0
+// Life_IN  : [@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb, @cccccccccccccccccccccccccccccccccccccccccc]
+// Life_OUT : [@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]
+// Next_IN  : @aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:[6], @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:[8], @cccccccccccccccccccccccccccccccccccccccccc:[6]
+// Next_OUT : @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:[8]
+
+LD R0, dddddddddddddddddddddddddddddddddddddddddd
+// Life_IN  : [@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]
+// Life_OUT : [@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb, @dddddddddddddddddddddddddddddddddddddddddd]
+// Next_IN  : @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:[8]
+// Next_OUT : @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:[8], @dddddddddddddddddddddddddddddddddddddddddd:[8]
+
+MUL R0, R2, R0
+// Life_IN  : [@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb, @dddddddddddddddddddddddddddddddddddddddddd]
+// Life_OUT : [@eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee]
+// Next_IN  : @bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:[8], @dddddddddddddddddddddddddddddddddddddddddd:[8]
+// Next_OUT : @eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee:[9]
+
+ST eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee, R0
+// Life_IN  : [@eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee]
+// Life_OUT : []
+// Next_IN  : @eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee:[9]
+// Next_OUT : 
+

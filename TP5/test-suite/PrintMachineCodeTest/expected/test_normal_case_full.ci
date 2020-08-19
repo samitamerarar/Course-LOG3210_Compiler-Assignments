@@ -1,0 +1,78 @@
+ADD R1, #0, #0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : 
+
+LD R2, a
+// Life_IN  : []
+// Life_OUT : [@a]
+// Next_IN  : 
+// Next_OUT : @a:[2]
+
+MUL R2, R2, R2
+// Life_IN  : [@a]
+// Life_OUT : [@a]
+// Next_IN  : @a:[2]
+// Next_OUT : @a:[3, 7]
+
+ADD R1, #0, R2
+// Life_IN  : [@a]
+// Life_OUT : [@a]
+// Next_IN  : @a:[3, 7]
+// Next_OUT : @a:[7]
+
+LD R1, c
+// Life_IN  : [@a]
+// Life_OUT : [@a, @c]
+// Next_IN  : @a:[7]
+// Next_OUT : @a:[7], @c:[6]
+
+LD R0, d
+// Life_IN  : [@a, @c]
+// Life_OUT : [@a, @c, @d]
+// Next_IN  : @a:[7], @c:[6]
+// Next_OUT : @a:[7], @c:[6], @d:[6]
+
+ADD R0, R1, R0
+// Life_IN  : [@a, @c, @d]
+// Life_OUT : [@a]
+// Next_IN  : @a:[7], @c:[6], @d:[6]
+// Next_OUT : @a:[7]
+
+ADD R2, R2, #1
+// Life_IN  : [@a]
+// Life_OUT : [@a]
+// Next_IN  : @a:[7]
+// Next_OUT : @a:[9]
+
+LD R0, offset
+// Life_IN  : [@a]
+// Life_OUT : [@a, @offset]
+// Next_IN  : @a:[9]
+// Next_OUT : @a:[9], @offset:[9]
+
+ADD R0, R0, R2
+// Life_IN  : [@a, @offset]
+// Life_OUT : [@offset]
+// Next_IN  : @a:[9], @offset:[9]
+// Next_OUT : @offset:[11]
+
+LD R1, current
+// Life_IN  : [@offset]
+// Life_OUT : [@current, @offset]
+// Next_IN  : @offset:[11]
+// Next_OUT : @current:[11], @offset:[11]
+
+ADD R0, R1, R0
+// Life_IN  : [@current, @offset]
+// Life_OUT : [@size]
+// Next_IN  : @current:[11], @offset:[11]
+// Next_OUT : @size:[12]
+
+ST size, R0
+// Life_IN  : [@size]
+// Life_OUT : []
+// Next_IN  : @size:[12]
+// Next_OUT : 
+

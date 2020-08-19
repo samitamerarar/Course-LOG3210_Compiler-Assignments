@@ -1,0 +1,17 @@
+Declaration
+ num a;
+ num b;
+ num c;
+EndDeclaration
+
+a = b + 10;
+while(a > 0) {
+  if(a > 0) {
+      b = a + c;
+  }
+  else {
+      b = a;
+  }
+  a = c;
+}
+a = b + c;

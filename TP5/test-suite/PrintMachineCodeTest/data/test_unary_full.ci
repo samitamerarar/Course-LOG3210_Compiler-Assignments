@@ -1,0 +1,9 @@
+NUMBER_OF_REGISTER_AVAILABLE: 256
+
+t0 = minus a
+t1 = c / b
+t2 = minus t1
+t3 = t0 * t2
+e = t3 / 2
+
+return e

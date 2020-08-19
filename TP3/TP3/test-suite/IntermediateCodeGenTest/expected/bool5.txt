@@ -1,0 +1,41 @@
+_t0 = 2 + 3
+if 5 == _t0 goto _L0
+goto _L1
+_L0
+a = 1
+goto _L2
+_L1
+a = 0
+_L2
+if 1 == 2 goto _L3
+goto _L4
+_L3
+b = 1
+goto _L5
+_L4
+b = 0
+_L5
+if a == 1 goto _L9
+goto _L10
+_L9
+_t1 = 1
+goto _L11
+_L10
+_t1 = 0
+_L11
+if b == 1 goto _L12
+goto _L13
+_L12
+_t2 = 1
+goto _L14
+_L13
+_t2 = 0
+_L14
+if _t1 == _t2 goto _L6
+goto _L7
+_L6
+c = 1
+goto _L8
+_L7
+c = 0
+_L8

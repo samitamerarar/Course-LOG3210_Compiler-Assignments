@@ -1,0 +1,10 @@
+Declaration
+num a;
+EndDeclaration
+
+//good condition (while)
+while (1+4 > 3 && true) {
+  a = 1 ;
+}
+
+  

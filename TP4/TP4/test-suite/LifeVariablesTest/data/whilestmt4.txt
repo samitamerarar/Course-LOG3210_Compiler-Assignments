@@ -1,0 +1,13 @@
+Declaration
+ num a;
+ num b;
+ num c;
+EndDeclaration
+
+a = b + 10;
+while(a > 0) {
+    while(b > 0) {
+      b = b - c;
+    }
+}
+a = b + c;

@@ -1,0 +1,10 @@
+Declaration
+num a;
+EndDeclaration
+
+//error in condition (while)
+while (2*3) {
+  a = 1 ;
+}
+
+  

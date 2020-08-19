@@ -1,0 +1,13 @@
+Declaration
+num a;
+bool b;
+bool c;
+EndDeclaration
+
+if(c) {
+    if(b) {
+    } else {
+      a = 1 * 2;
+    }
+}
+c = b;

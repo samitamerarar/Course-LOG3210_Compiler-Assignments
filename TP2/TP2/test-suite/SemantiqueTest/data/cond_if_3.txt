@@ -1,0 +1,10 @@
+Declaration
+num a;
+EndDeclaration
+
+//error condition (if)
+if (1) {
+  a = 1 ;
+}
+
+  

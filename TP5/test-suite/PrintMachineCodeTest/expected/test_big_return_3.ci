@@ -1,0 +1,264 @@
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @a:[1]
+
+ST a, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @a:[1]
+// Next_OUT : 
+
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @b:[3]
+
+ST b, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @b:[3]
+// Next_OUT : 
+
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @c:[5]
+
+ST c, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @c:[5]
+// Next_OUT : 
+
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @d:[7]
+
+ST d, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @d:[7]
+// Next_OUT : 
+
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @e:[9]
+
+ST e, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @e:[9]
+// Next_OUT : 
+
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @f:[11]
+
+ST f, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @f:[11]
+// Next_OUT : 
+
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @g:[13]
+
+ST g, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @g:[13]
+// Next_OUT : 
+
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @h:[15]
+
+ST h, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @h:[15]
+// Next_OUT : 
+
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @i:[17]
+
+ST i, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @i:[17]
+// Next_OUT : 
+
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @j:[19]
+
+ST j, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @j:[19]
+// Next_OUT : 
+
+ADD R0, #0, #1
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @k:[21]
+
+ST k, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @k:[21]
+// Next_OUT : 
+
+LD R0, a
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @a!:[23]
+
+ST a, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @a!:[23]
+// Next_OUT : 
+
+LD R0, b
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @b!:[25]
+
+ST b, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @b!:[25]
+// Next_OUT : 
+
+LD R0, c
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @c!:[27]
+
+ST c, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @c!:[27]
+// Next_OUT : 
+
+LD R0, d
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @d!:[29]
+
+ST d, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @d!:[29]
+// Next_OUT : 
+
+LD R0, e
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @e!:[31]
+
+ST e, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @e!:[31]
+// Next_OUT : 
+
+LD R0, f
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @f!:[33]
+
+ST f, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @f!:[33]
+// Next_OUT : 
+
+LD R0, g
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @g!:[35]
+
+ST g, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @g!:[35]
+// Next_OUT : 
+
+LD R0, h
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @h!:[37]
+
+ST h, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @h!:[37]
+// Next_OUT : 
+
+LD R0, i
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @i!:[39]
+
+ST i, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @i!:[39]
+// Next_OUT : 
+
+LD R0, j
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : 
+// Next_OUT : @j!:[41]
+
+ST j, R0
+// Life_IN  : []
+// Life_OUT : []
+// Next_IN  : @j!:[41]
+// Next_OUT : 
+
+LD R0, k
+// Life_IN  : []
+// Life_OUT : [@k!]
+// Next_IN  : 
+// Next_OUT : @k!:[43]
+
+ST k, R0
+// Life_IN  : [@k!]
+// Life_OUT : []
+// Next_IN  : @k!:[43]
+// Next_OUT : 
+

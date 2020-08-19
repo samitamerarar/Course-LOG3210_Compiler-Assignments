@@ -1,0 +1,20 @@
+Declaration
+bool a;
+bool b;
+bool c;
+num d;
+num e;
+EndDeclaration
+
+
+a = d < e;
+if(a) {
+    b = a || c;
+    d = d + 1;
+}
+else {
+    b = a;
+    e = e + 1;
+}
+a = c;
+b = e < d;
